@@ -43,7 +43,7 @@ class BlogController extends AbstractController
     {
         $article = new Article();
         $form = $this->createFormBuilder($article) // Creer 1 formulaire lié à mon article;
-                    ->add('title', TextType::class, [
+    /*                ->add('title', TextType::class, [
                         'attr' => ['maxlength' => 2,
                         'class'=>'form-control'
                         ]
@@ -58,9 +58,14 @@ class BlogController extends AbstractController
                             'attr' => ['placeholder' => "",
                             'class'=>'form-control']])
                     
-                        
-                    
                     ->getForm();
+    */
+
+    // SIMPLIFICATION DE LA TACHE
+                       ->add('title')
+                       ->add('content')                
+                       ->add('image')                
+                        ->getForm();
 
         return $this->render('blog/nouveau.html.twig', [
                'formCreatArt' => $form->createView()

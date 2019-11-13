@@ -2,6 +2,8 @@
 
 {% block title %}Liste des Biens!{% endblock %}
 
+{% form_theme formCreatArt 'bootstrap_4_layout.html.twig' %}
+
 {% block body %}
 
 <div class = "jumbotron">
@@ -16,7 +18,16 @@
 <div class="container">
 
 
-{{ form(formCreatArt) }}
+{# {{ form_widget(formCreatArt) }} #}
+
+{{ form_widget(formCreatArt) }}
+
+    {{ form_row(formCreatArt.title, {attr: {'placeholder': 'Titre' }}) }}
+    {{ form_row(formCreatArt.content, {attr: {'placeholder': "Contenu" }}) }}
+    {{ form_row(formCreatArt.image, {attr: {'placeholder': "Image" }}) }}
+
+
+<buttoon type="submit" class="btn btn-success"> Ajouter cet article</button>
 </div>
 
 
