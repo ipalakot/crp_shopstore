@@ -6,6 +6,7 @@
 
 <div class = "jumbotron">
      {% for livre in livres%}
+           <div class = "col-md-4">
                <article>
                     <h2>{{ livre.title}}</h2>
                     <div class = "metadata"> Ecrit le  21/10/2019 / Categorie: </div>
@@ -16,6 +17,11 @@
                          <p>sur la mise en page elle-même. L'avantage du Lorem Ipsum sur un texte générique comme 'Du texte. Du texte. Du texte.' est qu'il possède une distribution de lettres plus ou moins normale, et en tout cas comparable avec celle du français standard. De nombreuses suites logicielles de mise en page ou éditeurs de sites Web ont fait du Lorem Ipsum leur faux texte par défaut, et une recherche pour 'Lorem Ipsum' vous conduira vers de nombreux sites qui n'en sont encore qu'à leur phase de construction. Plusieurs versions sont apparues avec le temps, parfois par accident, souvent intentionnellement </p>
                          <a href="#" class="btn btn-primary"> Lire la suite </a>      
                     </div>          
-               </article>      
+               </article>   
+          </div>
      {% endfor %}         
+               
+     <div class="pagination">
+          {{ knp_pagination_render(livres) }}
+     </div>   
 {% endblock %}
