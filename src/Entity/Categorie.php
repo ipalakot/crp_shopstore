@@ -29,7 +29,7 @@ class Categorie
     private $resume;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="categorie")
+     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="categorie", cascade="all", orphanRemoval=true)
      */
     private $articles;
 

@@ -20,14 +20,16 @@
 
 {# {{ form_widget(formCreatArt) }} #}
 
-{{ form_widget(formCreatArt) }}
+{{ form_start(formCreatArt) }}
 
     {{ form_row(formCreatArt.title, {attr: {'placeholder': 'Titre' }}) }}
     {{ form_row(formCreatArt.content, {attr: {'placeholder': "Contenu" }}) }}
     {{ form_row(formCreatArt.image, {attr: {'placeholder': "Image" }}) }}
 
+ <button type="submit" class="btn btn-success"> Ajouter cet article</button>
+ 
+{{ form_end(formCreatArt) }}
 
-<buttoon type="submit" class="btn btn-success"> Ajouter cet article</button>
 </div>
 
 

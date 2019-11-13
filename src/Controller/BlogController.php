@@ -2,12 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Article;
+use App\Entity\Categorie;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\Article;
-use Zend\Code\Generator\DocBlock\Tag\ReturnTag;
-use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Knp\Component\Pager\PaginatorInterface;
+
+use Zend\Code\Generator\DocBlock\Tag\ReturnTag;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -42,7 +45,9 @@ class BlogController extends AbstractController
     public function nouvelArticle(Request $request, ObjectManager $manager)
     {
         $article = new Article();
-        $form = $this->createFormBuilder($article) // Creer 1 formulaire lié à mon article;
+        $form = $this->createFormBuilder($article) 
+    
+        // Creer 1 formulaire lié à mon article;
     /*                ->add('title', TextType::class, [
                         'attr' => ['maxlength' => 2,
                         'class'=>'form-control'
@@ -64,9 +69,29 @@ class BlogController extends AbstractController
     // SIMPLIFICATION DE LA TACHE
                        ->add('title')
                        ->add('content')                
-                       ->add('image')                
-                        ->getForm();
+                       ->add('image')    
+                   //    ->add('Categorie')
 
+                       ->getForm();
+
+        $form->handleRequest($request);   // Le Request
+        
+        //var_dump($article);
+
+        if($form->isSubMitted() && $form->isValid()){ // Soumission du Formulaire
+            
+            $article->setCreatedAt(new \DateTime()); // Création de la date de l'article
+            
+            $article->setCategorie(new Categorie()); // Création de la date de l'article
+          
+            // $article->setCategorie_id(0);
+
+            $manager->persist($article); // Persistancede mon article
+            $manager->flush();
+
+            return $this->redirectToRoute('blog_show', ['id'=>$article->getId()]);
+        }
+        
         return $this->render('blog/nouveau.html.twig', [
                'formCreatArt' => $form->createView()
                ]);
