@@ -31,9 +31,9 @@ class BlogController extends AbstractController
     }
 
     /** 
-     * @Route("/blog/nouveau", name="blog_nouveau")
+     * @Route("/blog/nouveau", name="nouv.article")
     */
-    public function create()
+    public function nouvelArticle(Request $request)
     {
         Return $this->render('blog/nouveau.html.twig');
     }
