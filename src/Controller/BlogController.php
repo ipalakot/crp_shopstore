@@ -2,15 +2,12 @@
 
 namespace App\Controller;
 
-use App\Entity\Article;
-use App\Entity\Categorie;
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
-use Knp\Component\Pager\PaginatorInterface;
 
 use Zend\Code\Generator\DocBlock\Tag\ReturnTag;
+use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -18,6 +15,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
+use App\Entity\Article;
+use App\Entity\Categorie;
 class BlogController extends AbstractController
 {
     /**
@@ -82,14 +81,17 @@ class BlogController extends AbstractController
             
             $article->setCreatedAt(new \DateTime()); // Création de la date de l'article
             
-            $article->setCategorie(new Categorie()); // Création de la date de l'article
+           // $article->setCategorie(new Categorie()); // Création de la date de l'article
+           if ($article->getCategorie() === $this) {
+            $article->setCategorie(null);
+        }
           
             // $article->setCategorie_id(0);
 
             $manager->persist($article); // Persistancede mon article
-            $manager->flush();
+            $manager->flush(); // Enregistrement de l'article dans la BD
 
-            return $this->redirectToRoute('blog_show', ['id'=>$article->getId()]);
+            return $this->redirectToRoute('blog_show', ['id'=>$article->getId()]); // Redirection vers l'article
         }
         
         return $this->render('blog/nouveau.html.twig', [

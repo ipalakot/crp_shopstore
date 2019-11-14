@@ -1,0 +1,119 @@
+[33mcommit 7b6a269f0289de79a002df4ff73cb7ebdb30dddf[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: ipalakot <ipalakot@gmail.com>
+Date:   Wed Nov 13 17:23:46 2019 +0100
+
+    New migration
+
+[33mcommit 3da51e5b67f75852772b1c4bf70f51d448013031[m
+Author: ipalakot <ipalakot@gmail.com>
+Date:   Wed Nov 13 14:52:53 2019 +0100
+
+    Soumission de Formulaire
+
+[33mcommit 511d7ce7c0188451c2409c06298fb4621289aaf5[m
+Author: ipalakot <ipalakot@gmail.com>
+Date:   Wed Nov 13 14:01:35 2019 +0100
+
+    Adding article Form
+
+[33mcommit f9ed6ef7ec6ae9e2abc4638c48c5eced95f3bae9[m
+Author: ipalakot <ipalakot@gmail.com>
+Date:   Wed Nov 13 11:02:11 2019 +0100
+
+    MEL
+
+[33mcommit f6822177816be75d96b209a5bf677a5aa6fc8c8a[m
+Author: ipalakot <ipalakot@gmail.com>
+Date:   Wed Nov 13 04:15:19 2019 +0100
+
+    Security Path
+
+[33mcommit f0cc1cfcf4cfd58a91fa8617f03669921c009c3b[m
+Author: ipalakot <ipalakot@gmail.com>
+Date:   Thu Nov 7 10:43:26 2019 +0100
+
+    Adding Comments
+
+[33mcommit 3829e11918a9ef6c3cc2a89acf5e1676d6005f9d[m
+Author: ipalakot <ipalakot@gmail.com>
+Date:   Thu Nov 7 06:44:29 2019 +0100
+
+    Adding Paginator
+
+[33mcommit 29492e5fa86c14f1d14e6e516e1eb3e156e4e5bf[m
+Author: ipalakot <ipalakot@gmail.com>
+Date:   Thu Nov 7 03:05:13 2019 +0100
+
+    New article Navigation config
+
+[33mcommit 275efba65524662593020f010581fd1d56dffa4b[m
+Author: ipalakot <ipalakot@gmail.com>
+Date:   Thu Nov 7 03:04:25 2019 +0100
+
+    Controller NewArticle
+
+[33mcommit 300420ffad8074354b69d363412a5021836bf11d[m
+Author: ipalakot <ipalakot@gmail.com>
+Date:   Thu Nov 7 02:38:52 2019 +0100
+
+    Repair off my template blog_show
+
+[33mcommit 7da44d9866b453917d5117fc3c98766e4d293d42[m
+Author: ipalakot <ipalakot@gmail.com>
+Date:   Wed Nov 6 17:54:56 2019 +0100
+
+    MEP Faker
+
+[33mcommit a5b916527a779740eac268bd06315668efe51263[m
+Author: ipalakot <ipalakot@gmail.com>
+Date:   Wed Nov 6 11:51:30 2019 +0100
+
+    adding Category
+
+[33mcommit 3d79489cd02edcae61eb309dfe7ed4acb3bd29c8[m
+Author: ipalakot <ipalakot@gmail.com>
+Date:   Wed Oct 23 23:25:37 2019 +0200
+
+    Mise en place Fixtures des livres
+
+[33mcommit b5c1728bbdbc1d4b4834e59308e17c643df6de50[m
+Author: ipalakot <ipalakot@gmail.com>
+Date:   Wed Oct 23 23:05:20 2019 +0200
+
+    The LivreDatafixtures.php
+
+[33mcommit b5a50ade59db6dba26a045540c7f7db9a8bc7b81[m
+Author: ipalakot <ipalakot@gmail.com>
+Date:   Wed Oct 23 22:42:24 2019 +0200
+
+    Adding Livres ENtity
+
+[33mcommit e7d5bc61250bc1e8010e9234201f16b0d2f618fb[m
+Author: ipalakot <ipalakot@gmail.com>
+Date:   Tue Oct 22 18:47:07 2019 +0200
+
+    Creation 10 Fixtures
+
+[33mcommit c13f908c0f36010eb634784cd9059d0bcc1ab58c[m
+Author: ipalakot <ipalakot@gmail.com>
+Date:   Tue Oct 22 16:15:08 2019 +0200
+
+    Lancement de mes fixtures
+
+[33mcommit f95f83c434873d17f63e82c84c2a69d73bb8ed33[m
+Author: ipalakot <ipalakot@gmail.com>
+Date:   Tue Oct 22 15:54:41 2019 +0200
+
+    DBase / Entity / Fixtures
+
+[33mcommit 2481e3012ef4573fda9079e66c5dcbe0f379f309[m
+Author: ipalakot <ipalakot@gmail.com>
+Date:   Tue Oct 22 14:47:46 2019 +0200
+
+    Creation DataBase
+
+[33mcommit 14afda909f525659ccf7ebc71fb4c279f17eb36b[m
+Author: ipalakot <ipalakot@gmail.com>
+Date:   Tue Oct 22 14:27:28 2019 +0200
+
+    Initialization / HomeCtrlr / BlogCtrlr
