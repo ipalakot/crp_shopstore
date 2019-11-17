@@ -38,6 +38,18 @@ class BlogController extends AbstractController
         ]);
     }
 
+     /**
+     * @Route("/vide", name="vide.blog")
+     */
+    public function vide()
+    {
+        
+        
+        return $this->render('blog/underconstruct.html.twig', [
+            'controller_name' => 'BlogController',
+        ]);
+    }
+
     /** 
      * @Route("/blog/nouveau", name="nouv.article")
     */
@@ -98,6 +110,47 @@ class BlogController extends AbstractController
                'formCreatArt' => $form->createView()
                ]);
     }
+
+/** 
+     * @Route("/blog/{id}/modif", name="modif.article")
+    */
+    public function modifArticle(Article $article, Request $request, ObjectManager $manager)
+    {
+       // $article = new Article();
+        $form = $this->createFormBuilder($article) 
+                       ->add('title')
+                       ->add('content')                
+                       ->add('image')    
+                   //    ->add('Categorie')
+
+                       ->getForm();
+
+        $form->handleRequest($request);   // Le Request
+        
+        //var_dump($article);
+
+        if($form->isSubMitted() && $form->isValid()){ // Soumission du Formulaire
+            
+            $article->setCreatedAt(new \DateTime()); // Création de la date de l'article
+            
+           // $article->setCategorie(new Categorie()); // Création de la date de l'article
+           if ($article->getCategorie() === $this) {
+            $article->setCategorie(null);
+        }
+          
+            // $article->setCategorie_id(0);
+
+            $manager->persist($article); // Persistancede mon article
+            $manager->flush(); // Enregistrement de l'article dans la BD
+
+            return $this->redirectToRoute('blog_show', ['id'=>$article->getId()]); // Redirection vers l'article
+        }
+        
+        return $this->render('blog/modif.html.twig', [
+               'formCreatArt' => $form->createView()
+               ]);
+    }
+
 
 
     
