@@ -50,6 +50,19 @@ class BlogController extends AbstractController
         ]);
     }
 
+         /**
+     * @Route("/contact", name="blog.contact")
+     */
+    public function contact()
+    {
+        
+        
+        return $this->render('blog/contact.html.twig', [
+            'controller_name' => 'BlogController',
+        ]);
+    }
+
+
     /** 
      * @Route("/blog/nouveau", name="nouv.article")
     */

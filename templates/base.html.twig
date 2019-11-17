@@ -32,7 +32,7 @@
           <button class="btn btn-sm btn-outline-secondary bg-dark" type="button"  >Formulaire</button>
         </a>
       
-        <a href="{{ path('blog')}}" >
+        <a href="{{ path('blog.contact')}}" >
           <button class="btn btn-sm btn-outline-secondary" type="button" >Nous Contacter</button>
         </a>
 
@@ -48,8 +48,41 @@
 </nav>
         {% block body %}
 
+
         
         {% endblock %}
+
+        {% block footer %}
+
+            <div class="row bg-dark" >
+                <div class="col-sm-6 ">
+                  <div class="card">
+                    <div class="card-body bg-dark">
+                      <h5 class="card-title text-light">A propos de l'Agence</h5>
+                      <p class="card-text text-light">
+                            24-26 bd Chastenet de Géry </br>
+                            94814 Villejuif Cedex </br>
+                            Tél : 01 46 78 01 00 </br>
+                            Fax : 01 46 78 50 35 </br>
+                            paulguinot@guinot.asso.fr
+                      </p>
+                      <a href="#" class="btn btn-primary">Mapper notre Agence !</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-body bg-info">
+                      <h5 class="card-title">Special title treatment</h5>
+                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                      <a href="#" class="btn btn-primary">Mapper notre Agence !</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        {% endblock %}
+
+        
 
         {% block javascripts %}{% endblock %}
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
