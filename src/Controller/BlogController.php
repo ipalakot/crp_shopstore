@@ -17,6 +17,10 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 use App\Entity\Article;
 use App\Entity\Categorie;
+use phpDocumentor\Reflection\Types\Integer;
+use PhpParser\Node\Expr\Cast\String_;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+
 class BlogController extends AbstractController
 {
     /**
@@ -43,8 +47,6 @@ class BlogController extends AbstractController
      */
     public function vide()
     {
-        
-        
         return $this->render('blog/underconstruct.html.twig', [
             'controller_name' => 'BlogController',
         ]);
@@ -54,9 +56,7 @@ class BlogController extends AbstractController
      * @Route("/contact", name="blog.contact")
      */
     public function contact()
-    {
-        
-        
+    {     
         return $this->render('blog/contact.html.twig', [
             'controller_name' => 'BlogController',
         ]);
@@ -64,12 +64,13 @@ class BlogController extends AbstractController
 
 
     /** 
-     * @Route("/blog/nouveau", name="nouv.article")
+     * toString
+     * @Route("/blog/nouveau", name="article.nouv")
     */
     public function nouvelArticle(Request $request, ObjectManager $manager)
     {
         $article = new Article();
-        $form = $this->createFormBuilder($article) 
+        $form = $this->createFormBuilder($article)
     
         // Creer 1 formulaire lié à mon article;
     /*                ->add('title', TextType::class, [
@@ -94,7 +95,7 @@ class BlogController extends AbstractController
                        ->add('title')
                        ->add('content')                
                        ->add('image')    
-                   //    ->add('Categorie')
+                    //   ->add('Categorie', null)
 
                        ->getForm();
 
@@ -125,7 +126,7 @@ class BlogController extends AbstractController
     }
 
 /** 
-     * @Route("/blog/{id}/modif", name="modif.article")
+     * @Route("/blog/{id}/modif", name="article.modif")
     */
     public function modifArticle(Article $article, Request $request, ObjectManager $manager)
     {
@@ -134,6 +135,7 @@ class BlogController extends AbstractController
                        ->add('title')
                        ->add('content')                
                        ->add('image')    
+                    //   ->add('categorie')
                    //    ->add('Categorie')
 
                        ->getForm();
@@ -143,8 +145,6 @@ class BlogController extends AbstractController
         //var_dump($article);
 
         if($form->isSubMitted() && $form->isValid()){ // Soumission du Formulaire
-            
-            $article->setCreatedAt(new \DateTime()); // Création de la date de l'article
             
            // $article->setCategorie(new Categorie()); // Création de la date de l'article
            if ($article->getCategorie() === $this) {

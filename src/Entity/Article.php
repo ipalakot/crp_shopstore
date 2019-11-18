@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,7 +22,10 @@ class Article
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min = 5, max = 100, minMessage = "Erreur dans le formulaire} ", maxMessage = "Erreur dans le formulaire "
+     *)
      */
+
     private $title;
 
     /**
