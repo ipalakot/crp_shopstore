@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Administrator;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,7 +23,7 @@ use PhpParser\Node\Expr\Cast\String_;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
-class BlogController extends AbstractController
+class AdminController extends AbstractController
 {
     /**
      * @Route("/blog", name="blog")
@@ -100,6 +100,7 @@ class BlogController extends AbstractController
                                 'choice_label' => 'titre'
                          ])
                        ->add('content')                
+                       
                        ->add('image')    
                        ->getForm();
     */
