@@ -17,8 +17,10 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 use App\Entity\Article;
 use App\Entity\Categorie;
+use App\Form\ArticleType;
 use phpDocumentor\Reflection\Types\Integer;
 use PhpParser\Node\Expr\Cast\String_;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class BlogController extends AbstractController
@@ -64,13 +66,13 @@ class BlogController extends AbstractController
 
 
     /** 
-     * toString
      * @Route("/blog/nouveau", name="article.nouv")
     */
     public function nouvelArticle(Request $request, ObjectManager $manager)
     {
         $article = new Article();
-        $form = $this->createFormBuilder($article)
+       // $form = $this->createFormBuilder($article)
+        $form = $this->createForm(ArticleType::class, $article);
     
         // Creer 1 formulaire lié à mon article;
     /*                ->add('title', TextType::class, [
@@ -92,13 +94,15 @@ class BlogController extends AbstractController
     */
 
     // SIMPLIFICATION DE LA TACHE
-                       ->add('title')
+    /*                   ->add('title')
+                        ->add('Categorie', EntityType::class, [
+                                'class' => Categorie::class,
+                                'choice_label' => 'titre'
+                         ])
                        ->add('content')                
                        ->add('image')    
-                    //   ->add('Categorie', null)
-
                        ->getForm();
-
+    */
         $form->handleRequest($request);   // Le Request
         
         //var_dump($article);
@@ -108,9 +112,9 @@ class BlogController extends AbstractController
             $article->setCreatedAt(new \DateTime()); // Création de la date de l'article
             
            // $article->setCategorie(new Categorie()); // Création de la date de l'article
-           if ($article->getCategorie() === $this) {
-            $article->setCategorie(null);
-        }
+            /*  if ($article->getCategorie() === $this) {
+                $article->setCategorie(null);
+            }*/
           
             // $article->setCategorie_id(0);
 

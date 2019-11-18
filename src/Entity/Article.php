@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Categorie;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
@@ -22,7 +23,7 @@ class Article
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min = 5, max = 100, minMessage = "Erreur dans le formulaire} ", maxMessage = "Erreur dans le formulaire "
+     * @Assert\Length(min = 5, max = 100, minMessage = "Il y a une erreur", maxMessage = "il y a une erreur "
      *)
      */
 
