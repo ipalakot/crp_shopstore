@@ -23,10 +23,10 @@ use PhpParser\Node\Expr\Cast\String_;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
-class AdminController extends AbstractController
-{
+class ArticleController extends AbstractController
+{        
     /**
-     * @Route("/blog", name="blog")
+     * @Route("/article/blog", name="article.blog")
      */
     public function index(PaginatorInterface $paginator, Request $request)
     {
@@ -38,35 +38,15 @@ class AdminController extends AbstractController
              9 /*limit per page*/     );
 
         
-        return $this->render('blog/index.html.twig', [
-            'controller_name' => 'BlogController',
+        return $this->render('administrator/article/index.html.twig', [
+            'controller_name' => 'ArticleController',
             'articles'=>$articles
-        ]);
-    }
-
-     /**
-     * @Route("/vide", name="vide.blog")
-     */
-    public function vide()
-    {
-        return $this->render('blog/underconstruct.html.twig', [
-            'controller_name' => 'BlogController',
-        ]);
-    }
-
-         /**
-     * @Route("/contact", name="blog.contact")
-     */
-    public function contact()
-    {     
-        return $this->render('blog/contact.html.twig', [
-            'controller_name' => 'BlogController',
         ]);
     }
 
 
     /** 
-     * @Route("/blog/nouveau", name="article.nouv")
+     * @Route("/admin/artcicle/nouveau", name="admin.article.nouv")
     */
     public function nouvelArticle(Request $request, ObjectManager $manager)
     {
@@ -125,13 +105,13 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('blog_show', ['id'=>$article->getId()]); // Redirection vers l'article
         }
         
-        return $this->render('blog/nouveau.html.twig', [
+        return $this->render('administrator/article/nouveau.html.twig', [
                'formCreatArt' => $form->createView()
                ]);
     }
 
 /** 
-     * @Route("/blog/{id}/modif", name="article.modif")
+     * @Route("/admin/artcicle/{id}/modif", name="admin.article.modif")
     */
     public function modifArticle(Article $article, Request $request, ObjectManager $manager)
     {
@@ -164,21 +144,21 @@ class AdminController extends AbstractController
             return $this->redirectToRoute('blog_show', ['id'=>$article->getId()]); // Redirection vers l'article
         }
         
-        return $this->render('blog/modif.html.twig', [
+        return $this->render('administrator/article/modif.html.twig', [
                'formCreatArt' => $form->createView()
                ]);
     }
 
     
     /**
-     * @Route("/blog/{id}", name="blog_show")
+     * @Route("/article/{id}", name="article.show")
      */
     public function show($id)
     {
         $repo = $this->getDoctrine()->getRepository(Article::class);
         $article= $repo->find($id);
 
-        return $this->render('blog/show.html.twig', [
+        return $this->render('administrator/article/show.html.twig', [
             'article'=>$article
         ]);
     }

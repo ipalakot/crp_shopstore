@@ -34,6 +34,17 @@ class HomeController extends AbstractController
         ]);
     }
 
+    
+    /**
+     * @Route("/vide", name="home.vide")
+     */
+    public function vide()
+    {
+        return $this->render('home/underconstruct.html.twig', [
+            'controller_name' => 'BlogController',
+        ]);
+    }
+
     /** 
      * @Route("/", name="crp")
     */
@@ -45,4 +56,13 @@ class HomeController extends AbstractController
         ]); 
    } */
 
+            /**
+     * @Route("/contact", name="home.contact")
+     */
+    public function contact()
+    {     
+        return $this->render('home/contact.html.twig', [
+            'controller_name' => 'BlogController',
+        ]);
+    }
 }
