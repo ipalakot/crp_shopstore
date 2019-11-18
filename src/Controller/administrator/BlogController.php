@@ -168,8 +168,6 @@ class BlogController extends AbstractController
                ]);
     }
 
-
-
     
     /**
      * @Route("/blog/{id}", name="blog_show")
