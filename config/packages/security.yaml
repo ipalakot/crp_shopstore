@@ -4,12 +4,17 @@ security:
     #    in_memory: { memory: null }
     
     providers:
-        in_memory: 
-            memory:
-                users: 
-                    ipalakot:
-                        password: ipalakot
-                        roles: ROLE_ADMIN
+    #    in_memory: 
+    #        memory:
+    #            users: 
+    #                ipalakot:
+    #                    password: ipalakot
+    #                    roles: ROLE_ADMIN
+        in_database:
+            entity:
+                class: App\Entity\Utilsateurs
+                property: noms
+
 
     firewalls:
         dev:
@@ -17,10 +22,13 @@ security:
             security: false
         main:
             anonymous: true
-            http_basic : true
+        #    http_basic : true
             logout:
                 path: /logout
 
+            form_login:
+                check_path: login
+                login_path: /login
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
 

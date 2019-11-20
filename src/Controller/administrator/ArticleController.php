@@ -110,8 +110,8 @@ class ArticleController extends AbstractController
                ]);
     }
 
-/** 
-     * @Route("/admin/artcicle/{id}/modif", name="admin.article.modif")
+    /** 
+    * @Route("/admin/artcicle/{id}/modif", name="admin.article.modif")
     */
     public function modifArticle(Article $article, Request $request, ObjectManager $manager)
     {
