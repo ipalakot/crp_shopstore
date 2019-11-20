@@ -12,7 +12,7 @@ security:
     #                    roles: ROLE_ADMIN
         in_database:
             entity:
-                class: App\Entity\Utilsateurs
+                class: App\Entity\Users
                 property: noms
 
 
