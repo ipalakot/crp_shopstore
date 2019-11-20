@@ -1,0 +1,40 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Liste des Biens!{% endblock %}
+
+{% block body %}
+
+     <div class = "jumbotron">
+          <h2> Categories Administrator Page!</h2>
+     </div>
+
+     <div class = "container m-10">
+     
+          <div class = "row">
+               {% for categorie in categories %}
+
+                    <div class = "col-md-12">
+
+                         <article>
+
+                              <h5>{{ categorie.titre}}</h5>
+                                
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                       <a href="#">
+                                             <button type="button" class="btn btn-secondary">Modifier</button>
+                                        </a> 
+                                        <a href="#">
+                                             <button type="button" class="btn btn-secondary">Supprimer</button>
+                                        </a> 
+                                </div>
+                        
+                         </article> 
+                    </div> 
+               {% endfor %}         
+          </div>
+          
+          <div class="pagination">
+                         {{ knp_pagination_render(categories) }}
+          </div>
+     </div>
+{% endblock %}

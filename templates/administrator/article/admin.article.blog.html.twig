@@ -1,0 +1,44 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Liste des Biens!{% endblock %}
+
+{% block body %}
+
+     <div class = "jumbotron">
+          <h2> Articles Administrator Page!</h2>
+     </div>
+
+
+     <div class = "container m-10">
+     
+          <div class = "row">
+               {% for article in articles%}
+
+
+                    <div class = "col-md-6">
+                         <article>
+
+                              <h5>{{ article.title}}</h5>
+                                <div class = "metadata"> 
+                                   Ecrit le : {{ article.createdAt | date('d/m/Y') }} 
+                                        <br> Categorie:  {{ article.categorie.titre }} </br>
+                                </div>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                       <a href="{{path('admin.article.modif', {'id': article.id})}}">
+                                             <button type="button" class="btn btn-secondary">Modifier</button>
+                                        </a> 
+                                        <a href="{{path('admin.article.modif', {'id': article.id})}}">
+                                             <button type="button" class="btn btn-secondary">Supprimer</button>
+                                        </a> 
+                                </div>
+                        
+                         </article> 
+                    </div> 
+               {% endfor %}         
+          </div>
+          
+          <div class="pagination">
+                         {{ knp_pagination_render(articles) }}
+          </div>
+     </div>
+{% endblock %}
