@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %} 
+
+{% block title %} Connexion!{% endblock %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+
+    <div class = "jumbotron">
+                <h4> Identification Utilisateur ! </h4>
+    </div>
+
+    <div class="container mt-4">
+
+        {{ form_start(form) }}
+
+            {{ form_widget(form) }}
+
+        <button type="submit" class="btn btn-primary"> Connexion </button>
+        <br></br>
+
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}
