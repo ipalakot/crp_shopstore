@@ -4,6 +4,7 @@ namespace App\Controller\Administrator;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
 
 use Zend\Code\Generator\DocBlock\Tag\ReturnTag;
 use Knp\Component\Pager\PaginatorInterface;
@@ -162,4 +163,19 @@ class ArticleController extends AbstractController
             'article'=>$article
         ]);
     }
+
+    /**
+     * @Route("/admin/article/{id}", name="admin.article.suppr") // Route pour la suppression
+     */
+    public function delete(Article $article, ObjectManager $manager, Request $request ): Response // Action de Suppression
+    {
+        if ($this->isCsrfTokenValid('delete'.$article->getId(), $request->request->get('_token'))) {
+            $manager = $this->getDoctrine()->getManager();
+            $manager->remove($article);
+            $manager->flush();
+        }
+
+        return $this->redirectToRoute('article.blog');
+    }
+
 }
