@@ -4,35 +4,35 @@ namespace App\Controller;
 
 use App\Form\SecurityType;
 use App\Entity\User;
+
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\BrowserKit\Request as SymfonyRequest;
-// use Symfony\Component\BrowserKit\Request as SymfonyRequest;
+use Symfony\Component\Security\Core\User\UserInterface;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+
+
+// use Symfony\Component\BrowserKit\Request as SymfonyRequest;
+
 //use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {   
     /**
-     * @Route("/login", name="login")
+     * @Route("/admin/user/nouveau", name="user.nouveua")
      */
-    public function login(ObjectManager $manager, Request $request)
+    public function nouvelUser(ObjectManager $manager, Request $request)
     {
-        
-        // get the login error if there is one
-        // $error = $authenticationUtils->getLastAuthenticationError();
-
-        // last username entered by the user
-        //$lastUsername = $authenticationUtils->getLastUsername();
-        /*    
-        return $this->render('security/login.html.twig', [
-            'last_username' => $lastUsername,
-            'error' => $error
-        ]); */
-
         $user= new User();
-        $form = $this->createForm(SecurityType::class, $user);
+        $form = $this->createFormBuilder($user)
+                        ->add('username')
+                        ->add('password')
+                        ->add('email')
+                        ->getForm();
 
         $form->handleRequest($request);
        
@@ -40,10 +40,12 @@ class SecurityController extends AbstractController
            $manager->persist($user);
            $manager->flush();
         }
-    	return $this->render('security/enregistrement.html.twig', [
+    	return $this->render('security/nouveau.html.twig', [
             'form' => $form->createView()
         ]);
-   }
+        }
+
+
     
     
     /**
