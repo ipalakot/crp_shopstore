@@ -14,6 +14,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 
 // use Symfony\Component\BrowserKit\Request as SymfonyRequest;
@@ -22,6 +23,25 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class SecurityController extends AbstractController
 {   
+     /**
+     * @Route("/admin/user/blog", name="user.liste")
+     */
+    public function listUser(PaginatorInterface $paginator, Request $request)
+    {
+        $repo = $this->getDoctrine()->getRepository(User::class);
+        
+        $user = $paginator->paginate(
+            $repo->findAll(),
+            $request->query->getInt('page', 1), /*page number*/
+             9 /*limit per page*/     );
+
+        
+        return $this->render('security/liste.html.twig', [
+            'user'=>$user
+        ]);
+    }
+
+
     /**
      * @Route("/admin/user/nouveau", name="user.nouveua")
      */

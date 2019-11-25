@@ -112,7 +112,7 @@ class ArticleController extends AbstractController
     }
 
     /** 
-    * @Route("/admin/artcicle/{id}/modif", name="admin.article.modif")
+    * @Route("/admin/artcicle/{id}", name="admin.article.modif" method="GET|POST")
     */
     public function modifArticle(Article $article, Request $request, ObjectManager $manager)
     {
@@ -165,13 +165,13 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/admin/article/{id}", name="admin.article.suppr") // Route pour la suppression
+     * @Route("/admin/artcicle/{id}", name="admin.article.suppr", method="DELETE") // Route pour la suppression
      */
     public function delete(Article $article, ObjectManager $manager, Request $request ): Response // Action de Suppression
     {
         if ($this->isCsrfTokenValid('delete'.$article->getId(), $request->request->get('_token'))) {
             $manager = $this->getDoctrine()->getManager();
-            $manager->remove($article);
+           $this->$manager->remove($article);
             $manager->flush();
         }
 
